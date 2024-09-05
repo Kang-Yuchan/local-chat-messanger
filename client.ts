@@ -6,7 +6,8 @@ export const createClient = () => {
   const client = dgram.createSocket("udp4");
 
   client.on("message", (msg) => {
-    console.log(msg);
+    const decodedMessage = msg.toString("utf8");
+    console.log(`Server: ${decodedMessage}`);
   });
 
   const rl = readline.createInterface({
@@ -33,8 +34,6 @@ const sendMessage = (client: dgram.Socket, message: string) => {
   client.send(message, SERVER_PORT, SERVER_ADDRESS, (err) => {
     if (err) {
       console.error("Failed to send message:", err);
-    } else {
-      console.log(`Client sent: ${message}`);
     }
   });
 };
