@@ -2,6 +2,10 @@
   "name": "local-chat-messanger",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start:server": "bun run index.ts server",
+    "start:client": "bun run index.ts client"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
